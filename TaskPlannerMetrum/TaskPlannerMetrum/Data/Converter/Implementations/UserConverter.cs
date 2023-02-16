@@ -21,6 +21,8 @@ namespace TaskPlannerMetrum.Data.Converter.Implementations
                 PermissionId = origin.PermissionId,
                 PhoneNumber = origin.PhoneNumber,
                 Password= origin.Password,
+                WorkspaceID = origin.WorkspaceID,
+                CreationDate = origin.CreationDate,
             };
         }
 
@@ -42,6 +44,8 @@ namespace TaskPlannerMetrum.Data.Converter.Implementations
                 PermissionId = origin.PermissionId,
                 PhoneNumber = origin.PhoneNumber,
                 Password = origin.Password,
+                WorkspaceID= origin.WorkspaceID,
+                CreationDate= origin.CreationDate,
             };
         }
 

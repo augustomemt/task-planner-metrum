@@ -9,10 +9,10 @@ namespace TaskPlannerMetrum.Repository.Generic
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySQLContext _context;
+        private MSSQLContext _context;
 
         private DbSet<T> dataset;
-        public GenericRepository(MySQLContext context)
+        public GenericRepository(MSSQLContext context)
         {
             _context = context;
             dataset = _context.Set<T>();

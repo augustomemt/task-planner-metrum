@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TaskPlannerMetrum.Data.Converter.Implementations;
-using TaskPlannerMetrum.Data.Converter.PersonConverter;
+
 using TaskPlannerMetrum.Data.VO;
 using TaskPlannerMetrum.Model;
 using TaskPlannerMetrum.Repository.Generic;
@@ -33,7 +34,7 @@ namespace TaskPlannerMetrum.Business.Implementations
 
         // Method responsible to crete one new person
         public UserVO Create(UserVO user)
-        {
+        {   user.CreationDate = DateTime.Now;
             var userEntity = _converter.Parse(user);
             userEntity = _repository.Create(userEntity);
             return _converter.Parse(userEntity);

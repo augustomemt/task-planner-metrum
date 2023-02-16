@@ -23,10 +23,12 @@ namespace TaskPlannerMetrum.Model
         public string PhoneNumber { get; set; }
 
         [Column("department_id")]
-        public long DepartmentId { get; set; }
+        public int DepartmentId { get; set; }
+        [Column("WorkspaceID")]
+        public int WorkspaceID { get; set; }
 
         [Column("permission_id")]
-        public long PermissionId { get; set; }
+        public int PermissionId { get; set; }
 
         [Column("password")]
         public string Password { get; set; }
@@ -36,6 +38,9 @@ namespace TaskPlannerMetrum.Model
 
         [Column("refresh_token_expiry_time")]
         public DateTime RefreshTokenExpiryTime { get; set; }
+
+        [Column("CreationDate")]
+        public DateTime CreationDate { get;set; }
 
     }
 }

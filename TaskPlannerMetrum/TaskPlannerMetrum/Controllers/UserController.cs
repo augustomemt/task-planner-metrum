@@ -43,12 +43,12 @@ namespace TaskPlannerMetrum.Controllers
         // receiving an ID as in the Request Path
         // Get with parameters for FindById -> Search by ID
         [HttpGet("{id}")]
-        [ProducesResponseType((200), Type = typeof(PersonVO))]
+        [ProducesResponseType((200), Type = typeof(UserVO))]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
         //[TypeFilter(typeof(HyperMediaFilter))]
-        public IActionResult Get(long id)
+        public IActionResult Get(int id)
         {
             var user = _userBusiness.FindByID(id);
             if (user == null) return NotFound();

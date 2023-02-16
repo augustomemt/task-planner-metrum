@@ -5,7 +5,7 @@ namespace TaskPlannerMetrum.Data.VO
 {
     public class UserVO
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string UserName { get; set; }
 
@@ -14,12 +14,14 @@ namespace TaskPlannerMetrum.Data.VO
         public string UserEmail { get; set; }
 
         public string PhoneNumber { get; set; }
-        public long DepartmentId { get; set; }
-        public long PermissionId { get; set; }
+        public int WorkspaceID { get; set; }
+        public int DepartmentId { get; set; }
+        public int PermissionId { get; set; }
         public string Password { get; set; }
         public string RefreshToken { get; set; }
 
         public DateTime RefreshTokenExpiryTime { get; set; }
+        public DateTime CreationDate { get; set; }
 
     }
 }

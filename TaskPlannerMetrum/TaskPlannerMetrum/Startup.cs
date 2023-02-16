@@ -42,8 +42,11 @@ namespace TaskPlannerMetrum
                 .AllowAnyHeader();
             }));
             services.AddControllers();
-            var connection = Configuration["MySQLConnection:MySQLConnectionString"];
-            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+            //var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+           // services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+
+            var connection = Configuration["MSSQLServerSQLConnection:MSSQLServerSQLConnectionString"];
+            services.AddDbContext<MSSQLContext>(options => options.UseSqlServer(connection));
 
             services.AddMvc(options =>
             {
@@ -68,7 +71,6 @@ namespace TaskPlannerMetrum
                         }
                     });
             });
-            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
             services.AddScoped<IUserBusiness, UserBusinessImplementation>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
