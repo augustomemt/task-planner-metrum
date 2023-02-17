@@ -87,7 +87,7 @@ namespace TaskPlannerMetrum.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(401)]
-        public IActionResult Delete(long id)
+        public IActionResult Delete(int id)
         {
             _userBusiness.Delete(id);
             return NoContent();

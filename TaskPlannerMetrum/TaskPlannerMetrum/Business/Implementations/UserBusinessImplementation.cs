@@ -27,7 +27,7 @@ namespace TaskPlannerMetrum.Business.Implementations
         }
 
         // Method responsible for returning one person by ID
-        public UserVO FindByID(long id)
+        public UserVO FindByID(int id)
         {
             return _converter.Parse(_repository.FindByID(id));
         }
@@ -49,12 +49,12 @@ namespace TaskPlannerMetrum.Business.Implementations
         }
 
         // Method responsible for deleting a person from an ID
-        public void Delete(long id)
+        public void Delete(int id)
         {
             _repository.Delete(id);
         }
 
-        UserVO IUserBusiness.FindByID(long id)
+        UserVO IUserBusiness.FindByID(int id)
         {
             throw new System.NotImplementedException();
         }

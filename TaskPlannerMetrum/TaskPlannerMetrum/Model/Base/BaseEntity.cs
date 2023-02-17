@@ -8,5 +8,9 @@ namespace TaskPlannerMetrum.Model.Base
         [Key]
         [Column("id")]
         public int Id { get; set; }
+
+        [Key]
+        [Column("ID")]
+        public int ID { get; set; }
     }
 }

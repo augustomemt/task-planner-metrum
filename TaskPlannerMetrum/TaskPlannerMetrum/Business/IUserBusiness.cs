@@ -6,9 +6,10 @@ namespace TaskPlannerMetrum.Business
     public interface IUserBusiness
     {
         UserVO Create(UserVO person);
-        UserVO FindByID(long id);
+        UserVO FindByID(int id);
         List<UserVO> FindAll();
         UserVO Update(UserVO person);
-        void Delete(long id);
+        void Delete(int id);
+        
     }
 }

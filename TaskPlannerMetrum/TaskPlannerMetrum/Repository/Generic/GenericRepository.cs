@@ -23,7 +23,7 @@ namespace TaskPlannerMetrum.Repository.Generic
             return dataset.ToList();
         }
 
-        public T FindByID(long id)
+        public T FindByID(int id)
         {
             return dataset.SingleOrDefault(p => p.Id.Equals(id));
         }
@@ -64,7 +64,7 @@ namespace TaskPlannerMetrum.Repository.Generic
             }
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             var result = dataset.SingleOrDefault(p => p.Id.Equals(id));
             if (result != null)
@@ -81,7 +81,7 @@ namespace TaskPlannerMetrum.Repository.Generic
             }
         }
 
-        public bool Exists(long id)
+        public bool Exists(int id)
         {
             return dataset.Any(p => p.Id.Equals(id));
         }
