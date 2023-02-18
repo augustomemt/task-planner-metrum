@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using TaskPlannerMetrum.Business;
 using TaskPlannerMetrum.Model;
+using TaskPlannerMetrum.Model.DTO;
 
 namespace TaskPlannerMetrum.Controllers
 {
@@ -33,7 +34,35 @@ namespace TaskPlannerMetrum.Controllers
         //[TypeFilter(typeof(HyperMediaFilter))]
         public IActionResult Get()
         {
+            
             return Ok(_projectBusiness.FindAll());
         }
+
+
+        [HttpGet("ManagerPlanner")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult GetManagerPlanner()
+        {
+
+            return Ok(_projectBusiness.FindPlannerManager());
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult Create(ProjectDTO project)
+        {
+
+            return Ok(_projectBusiness.Create(project));
+        }
+
+
     }
 }

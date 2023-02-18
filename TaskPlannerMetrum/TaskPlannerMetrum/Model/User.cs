@@ -37,10 +37,10 @@ namespace TaskPlannerMetrum.Model
         public string RefreshToken { get; set; }
 
         [Column("refresh_token_expiry_time")]
-        public DateTime RefreshTokenExpiryTime { get; set; }
+        public DateTime? RefreshTokenExpiryTime { get; set; }
 
         [Column("CreationDate")]
-        public DateTime CreationDate { get;set; }
+        public DateTime? CreationDate { get;set; }
 
     }
 }
