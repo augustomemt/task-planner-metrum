@@ -5,7 +5,7 @@ namespace TaskPlannerMetrum.Business
 {
     public interface IProjectsBusiness
     {
-        Projects Create(ProjectDTO projects);
+        bool Create(ProjectDTO projects);
         //UserVO FindByID(long id);
         dynamic FindAll();
         dynamic FindPlannerManager();

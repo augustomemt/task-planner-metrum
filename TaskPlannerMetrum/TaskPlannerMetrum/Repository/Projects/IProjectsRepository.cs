@@ -7,6 +7,6 @@ namespace TaskPlannerMetrum.Repository.Projects
     {
         public List<vProjectList> GetAllProjects();
 
-        public TaskPlannerMetrum.Model.Projects Create(TaskPlannerMetrum.Model.Projects newProject);
+        public bool Create(TaskPlannerMetrum.Model.Projects newProject);
     }
 }

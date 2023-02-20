@@ -18,8 +18,8 @@ namespace TaskPlannerMetrum.Model.Context
         public DbSet<ActivityPlan> ActivityPlan { get; set; }
 
         public DbSet<Department> Department { get; set; }
-        //public DbSet<Intermediaria> Intermediaria { get; set; }
-        
+        public DbSet<DepartmentProjects> DepartmentProjects { get; set; }
+
         public DbSet<Projects> Projects { get; set; }
 
         public DbSet<Clients>Clients { get; set; }

@@ -13,7 +13,7 @@ namespace TaskPlannerMetrum.Model.DTO
 
         public string contractEndDate { get; set; }
 
-        public List<string> dapartment { get; set; }
+        public string[] dapartment { get; set; }
 
         public string internalCode { get; set; }
 

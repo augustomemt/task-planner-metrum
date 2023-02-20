@@ -14,17 +14,17 @@ namespace TaskPlannerMetrum.Repository.Projects
 
         public ProjectsRepository(MSSQLContext context) { _context = context; }
 
-        public Model.Projects Create(Model.Projects newProject)
+        public bool Create(Model.Projects newProject)
         {
             try
             {
                 _context.Add(newProject);
                 _context.SaveChanges();
-                return newProject;
+                return true;
             }
             catch (Exception)
             {
-                throw;
+                return false;
             }
         }
 

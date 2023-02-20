@@ -18,6 +18,9 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Net.Http.Headers;
 using Serilog;
 using TaskPlannerMetrum.Repository.Projects;
+using TaskPlannerMetrum.Repository.DepartmentProjects;
+using TaskPlannerMetrum.Repository.ActiviesScope;
+using TaskPlannerMetrum.Repository.ActivityPlan;
 
 namespace TaskPlannerMetrum
 {
@@ -76,7 +79,13 @@ namespace TaskPlannerMetrum
             services.AddScoped<IDepartmentBusiness, DepartmentBusinessImplementation>();
             services.AddScoped<IProjectsBusiness, ProjectsBusinessImplementation>();
             services.AddScoped<IClientsBusiness, ClientsBusinessImplementation>();
+            services.AddScoped<IActiviesScopeBusiness, ActivesScopeBusinessImplementation>();
+            services.AddScoped<IActivityPlanBusiness, ActivityPlanBusiness>();
+
+            services.AddScoped<IActivityPlanRepository, ActivityPlanRepository>();
+            services.AddScoped<IActiviesRepository, ActiviesScopeRepository>();
             services.AddScoped<IProjectsRepository, ProjectsRepository>();
+            services.AddScoped<IDepartmentProjectsRepository, DepartmentProjectsRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 

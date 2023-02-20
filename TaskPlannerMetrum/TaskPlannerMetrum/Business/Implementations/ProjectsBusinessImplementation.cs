@@ -3,6 +3,7 @@ using System.Linq;
 using TaskPlannerMetrum.Data.Converter.Implementations;
 using TaskPlannerMetrum.Model;
 using TaskPlannerMetrum.Model.DTO;
+using TaskPlannerMetrum.Repository.DepartmentProjects;
 using TaskPlannerMetrum.Repository.Generic;
 using TaskPlannerMetrum.Repository.Projects;
 
@@ -13,16 +14,19 @@ namespace TaskPlannerMetrum.Business.Implementations
 
         private readonly IProjectsRepository _projectRepository;
         private readonly IUserBusiness _userBusiness;
+        private readonly IDepartmentProjectsRepository _departmentProjectsRepository;
 
         
 
-        public ProjectsBusinessImplementation( IProjectsRepository projectsRepository, IUserBusiness userBusiness)
+        public ProjectsBusinessImplementation( IProjectsRepository projectsRepository, IUserBusiness userBusiness, IDepartmentProjectsRepository departmentProjectsRepository)
         {
              _projectRepository= projectsRepository;
             _userBusiness= userBusiness;
+            _departmentProjectsRepository = departmentProjectsRepository;
+            
          
         }
-        public Projects Create(ProjectDTO projects)
+        public bool Create(ProjectDTO projects)
         {
             Projects newProject = new Projects
             {
@@ -36,7 +40,15 @@ namespace TaskPlannerMetrum.Business.Implementations
                 WorkspaceID = 1
                 
             };
-            return _projectRepository.Create(newProject);
+            if(_projectRepository.Create(newProject))
+            {
+
+                return _departmentProjectsRepository.Create(projects.projectName, projects.dapartment);
+            }
+            else
+            {
+                return false;
+            }
             
         }
 
