@@ -41,6 +41,7 @@ C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\Pu
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\TaskPlannerMetrum.deps.json
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\TaskPlannerMetrum.runtimeconfig.json
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\TaskPlannerMetrum.pdb
+C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\task-planner-metrum\TaskPlannerMetrum\TaskPlannerMetrum\obj\Release\net5.0\PubTmp\Out\Microsoft.DotNet.PlatformAbstractions.dll

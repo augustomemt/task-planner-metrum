@@ -17,6 +17,7 @@ namespace TaskPlannerMetrum.Model.ModelViews
         public DateTime? EndDate { get; set; }
         public int PMTeamID { get; set; }
         public string DepartmentName { get; set; }
+        public string full_name { get; set; }
 
     } 
 }

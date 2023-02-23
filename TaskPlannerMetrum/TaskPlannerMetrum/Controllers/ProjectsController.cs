@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using TaskPlannerMetrum.Business;
@@ -8,7 +9,7 @@ using TaskPlannerMetrum.Model.DTO;
 namespace TaskPlannerMetrum.Controllers
 {
 
-    [ApiController]
+    [ApiController]   
     [Route("api/[controller]/v{version:apiVersion}")]
     public class ProjectsController : ControllerBase
     {

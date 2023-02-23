@@ -1,4 +1,5 @@
-﻿using TaskPlannerMetrum.Model;
+﻿using System.Linq;
+using TaskPlannerMetrum.Model;
 using TaskPlannerMetrum.Repository.ActiviesScope;
 using TaskPlannerMetrum.Repository.ActivityPlan;
 using TaskPlannerMetrum.Repository.Generic;
@@ -9,7 +10,7 @@ namespace TaskPlannerMetrum.Business.Implementations
     {
         private readonly IActivityPlanRepository _activiesRepository;
 
-        public ActivityPlanBusiness(IRepository<Clients> repository, IActivityPlanRepository activiesRepository)
+        public ActivityPlanBusiness( IActivityPlanRepository activiesRepository)
         {
             _activiesRepository= activiesRepository;
         }
@@ -28,6 +29,11 @@ namespace TaskPlannerMetrum.Business.Implementations
         public dynamic GetExecutorPlan(string projectId)
         {
             return _activiesRepository.GetExecutorPlan(projectId);
+        }
+
+        public dynamic TasksByProject(string projectId)
+        {
+            return _activiesRepository.FindAllTaskByProject(projectId).OrderByDescending(s => s.ScheduledDate);
         }
     }
 }

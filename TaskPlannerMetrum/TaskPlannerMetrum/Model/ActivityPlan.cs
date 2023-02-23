@@ -21,7 +21,7 @@ namespace TaskPlannerMetrum.Model
 
         public string NotesFromPlanner { get; set; }
 
-        public int ExecutorTemID { get; set; }
+        public int ExecutorTeamID { get; set; }
 
         public char Status { get; set; }    
 

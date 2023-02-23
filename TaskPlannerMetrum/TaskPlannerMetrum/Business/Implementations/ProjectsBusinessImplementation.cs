@@ -56,7 +56,7 @@ namespace TaskPlannerMetrum.Business.Implementations
         {
             try
             {
-                return _projectRepository.GetAllProjects().Select(s => new { s.ProjectName, s.ClientName, s.PlannedManHour, s.StartDate, s.DepartmentName, s.ProjectID });
+                return _projectRepository.GetAllProjects().Where(s => s.StartDate != null).OrderByDescending(s => s.StartDate).Select(s => new { s.ProjectName, s.ClientName, s.PlannedManHour, s.StartDate, s.DepartmentName, s.ProjectID, s.full_name });
             }
             catch (Exception e)
             {

@@ -1,4 +1,6 @@
-﻿using TaskPlannerMetrum.Model;
+﻿using System.Collections.Generic;
+using TaskPlannerMetrum.Model;
+using TaskPlannerMetrum.Model.ModelViews;
 
 namespace TaskPlannerMetrum.Repository.ActivityPlan
 {
@@ -7,5 +9,7 @@ namespace TaskPlannerMetrum.Repository.ActivityPlan
         public dynamic GetExecutorPlan(string projectId);
 
         public bool Create(TaskPlannerMetrum.Model.ActivityPlan activityPlan);
+
+        public List<vActivityPlan> FindAllTaskByProject(string projectId);
     }
 }

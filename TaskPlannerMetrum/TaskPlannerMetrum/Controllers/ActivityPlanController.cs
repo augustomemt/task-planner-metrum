@@ -40,6 +40,17 @@ namespace TaskPlannerMetrum.Controllers
 
             return Ok(_activityPlanBusiness.Create(activityPlan));
         }
+        [HttpGet("TasksByProject")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        //[TypeFilter(typeof(HyperMediaFilter))]
+        public IActionResult FindTask(string projectId)
+        {
+
+            return Ok(_activityPlanBusiness.TasksByProject(projectId));
+        }
 
     }
 }

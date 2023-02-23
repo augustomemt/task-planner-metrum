@@ -21,6 +21,17 @@ using TaskPlannerMetrum.Repository.Projects;
 using TaskPlannerMetrum.Repository.DepartmentProjects;
 using TaskPlannerMetrum.Repository.ActiviesScope;
 using TaskPlannerMetrum.Repository.ActivityPlan;
+using TaskPlannerMetrum.Services.Implementations;
+using TaskPlannerMetrum.Services;
+using TaskPlannerMetrum.Repository.Users;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TaskPlannerMetrum.Configurations;
 
 namespace TaskPlannerMetrum
 {
@@ -39,6 +50,41 @@ namespace TaskPlannerMetrum
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var tokenConfigurations = new TokenConfiguration();
+
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                    Configuration.GetSection("TokenConfigurations")
+                )
+                .Configure(tokenConfigurations);
+
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = tokenConfigurations.Issuer,
+                    ValidAudience = tokenConfigurations.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfigurations.Secret))
+                };
+            });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
+
             services.AddCors(options => options.AddDefaultPolicy(builder =>
             {
                 builder.AllowAnyOrigin()
@@ -75,13 +121,18 @@ namespace TaskPlannerMetrum
                         }
                     });
             });
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUserBusiness, UserBusinessImplementation>();
             services.AddScoped<IDepartmentBusiness, DepartmentBusinessImplementation>();
             services.AddScoped<IProjectsBusiness, ProjectsBusinessImplementation>();
             services.AddScoped<IClientsBusiness, ClientsBusinessImplementation>();
+            
             services.AddScoped<IActiviesScopeBusiness, ActivesScopeBusinessImplementation>();
             services.AddScoped<IActivityPlanBusiness, ActivityPlanBusiness>();
+            services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+            services.AddTransient<ITokenService, TokenService>();
 
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IActivityPlanRepository, ActivityPlanRepository>();
             services.AddScoped<IActiviesRepository, ActiviesScopeRepository>();
             services.AddScoped<IProjectsRepository, ProjectsRepository>();
